@@ -9,7 +9,11 @@ Map::Map(int width, int height) {
     for (int i = 0; i < width; i++) {
         tiles[i] = new char[height];
         for (int j = 0; j < height; j++) {
-            tiles[i][j] = '.';
+            if (i == 0 || i == width - 1 || j == 0 || j == height - 1) {
+                tiles[i][j] = '#';
+            } else {
+                tiles[i][j] = '.';
+            }
         }
     }
 }
@@ -37,5 +41,9 @@ void Map::print(Player* player) {
 
 char Map::get_tile(int x, int y) {
     return tiles[x][y];
+}
+
+void Map::set_tile(int x, int y, char tile) {
+    tiles[x][y] = tile;
 }
 

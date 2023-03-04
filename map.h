@@ -12,6 +12,7 @@ class Map {
         ~Map();
         void print(Player* player);
         char get_tile(int x, int y);
+        void set_tile(int x, int y, char tile);
 };
 
 #endif

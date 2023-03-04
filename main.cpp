@@ -9,8 +9,8 @@ int main() {
     cbreak();
 
     // Create player and map
-    Player* player = new Player(0, 0, 10, 10);
-    Map* map = new Map(10, 10);
+    Player* player = new Player(1, 1);
+    Map* map = new Map(12, 12);
 
     // Game loop
     bool quit = false;
@@ -20,22 +20,36 @@ int main() {
         int ch = getch();
 
         // Handle user input
+        int dx = 0, dy = 0;
         switch (ch) {
             case 'h':
-                player->move(0, -1);
+                dx = 0;
+                dy = -1;
                 break;
             case 'j':
-                player->move(1, 0);
+                dx = 1;
+                dy = 0;
                 break;
             case 'k':
-                player->move(-1, 0);
+                dx = -1;
+                dy = 0;
                 break;
             case 'l':
-                player->move(0, 1);
+                dx = 0;
+                dy = 1;
                 break;
             case 'q':
                 quit = true;
                 break;
+        }
+
+        // Move player
+        player->move(dx, dy);
+
+        // Check if player has collided with a wall
+        if (map->get_tile(player->get_x(), player->get_y()) == '#') {
+            // Move player back to previous position
+            player->move(-dx, -dy);
         }
     }
 
