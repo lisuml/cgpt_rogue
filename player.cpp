@@ -10,11 +10,11 @@ void Player::move(int dx, int dy) {
     y += dy;
 }
 
-int Player::get_x() {
+int Player::get_x() const {
     return x;
 }
 
-int Player::get_y() {
+int Player::get_y() const {
     return y;
 }
 
