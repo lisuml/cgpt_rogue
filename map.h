@@ -5,7 +5,8 @@
 
 class Map {
     private:
-        int width, height;
+        int width;
+        int height;
         char** tiles;
     public:
         Map(int width, int height);

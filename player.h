@@ -3,12 +3,13 @@
 
 class Player {
     private:
-        int x, y;
+        int x;
+        int y;
     public:
         Player(int x, int y);
         void move(int dx, int dy);
-        int get_x();
-        int get_y();
+        int get_x() const;
+        int get_y() const;
 };
 
 #endif

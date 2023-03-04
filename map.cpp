@@ -2,9 +2,7 @@
 #include "map.h"
 #include "player.h"
 
-Map::Map(int width, int height) {
-    this->width = width;
-    this->height = height;
+Map::Map(int width, int height) : width(width), height(height) {
     tiles = new char*[width];
     for (int i = 0; i < width; i++) {
         tiles[i] = new char[height];
@@ -29,11 +27,8 @@ void Map::print(Player* player) {
     clear();
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
-            if (i == player->get_x() && j == player->get_y()) {
-                mvprintw(i, j, "@");
-            } else {
-                mvprintw(i, j, "%c", tiles[i][j]);
-            }
+            const char c = (i == player->get_x() && j == player->get_y()) ? '@' : tiles[i][j];
+            mvprintw(i, j, "%c", c);
         }
     }
     refresh();
