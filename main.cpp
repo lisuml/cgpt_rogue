@@ -9,7 +9,7 @@ int main() {
     cbreak();
 
     // Create player and map
-    Player* player = new Player(0, 0);
+    Player* player = new Player(0, 0, 10, 10);
     Map* map = new Map(10, 10);
 
     // Game loop
